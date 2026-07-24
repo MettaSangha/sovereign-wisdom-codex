@@ -6,15 +6,17 @@
   <title>The Sovereign Wisdom Codex</title>
   <style>
     :root {
-      --bg: #07090e;
-      --card-bg: rgba(255, 255, 255, 0.02);
-      --card-hover: rgba(255, 255, 255, 0.04);
-      --accent: #e2c07b;
-      --accent-glow: rgba(226, 192, 123, 0.15);
-      --text-main: #f0f4f8;
-      --text-muted: #94a3b8;
-      --border: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(226, 192, 123, 0.25);
+      --bg: #050608;
+      --card-bg: rgba(18, 22, 31, 0.5);
+      --card-hover: rgba(26, 32, 44, 0.7);
+      --accent: #e5c178;
+      --accent-glow: rgba(229, 193, 120, 0.12);
+      --accent-border: rgba(229, 193, 120, 0.3);
+      --text-main: #f1f5f9;
+      --text-muted: #808ea3;
+      --border: rgba(255, 255, 255, 0.05);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Cinzel", "Times New Roman", Georgia, serif;
     }
 
     * {
@@ -29,163 +31,190 @@
 
     body {
       background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(30, 41, 59, 0.3) 0%, transparent 50%);
       color: var(--text-main);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.7;
+      font-family: var(--font-sans);
+      line-height: 1.75;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 3rem 1.25rem;
+      padding: 4rem 1.25rem;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Cursor Glow Container */
+    #glow-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(800px circle at var(--x, 50%) var(--y, 30%), rgba(229, 193, 120, 0.04), transparent 80%);
+      transition: background 0.15s ease-out;
+    }
+
+    /* Reading Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s ease-out;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 740px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Floating Navigation */
+    /* Floating Navigation Header */
     nav {
       position: sticky;
       top: 1.5rem;
       z-index: 100;
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      background: rgba(7, 9, 14, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 0.75rem 1.5rem;
+      gap: 2.5rem;
+      background: rgba(5, 6, 8, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.85rem 2rem;
       border-radius: 9999px;
       border: 1px solid var(--border);
       width: fit-content;
-      margin: 0 auto 3.5rem auto;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin: 0 auto 4rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
       color: var(--accent);
-      text-shadow: 0 0 8px var(--accent-glow);
     }
 
     /* Header Section */
     header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 4.5rem;
     }
 
     .symbol {
       display: inline-block;
       color: var(--accent);
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      animation: pulse 4s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: scale(0.98); }
-      50% { opacity: 1; transform: scale(1.05); }
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.1em;
+      filter: drop-shadow(0 0 10px var(--accent-glow));
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 300;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-      background: linear-gradient(180deg, #ffffff 0%, var(--text-muted) 100%);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(180deg, #ffffff 30%, var(--text-muted) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
     }
 
     .description {
       color: var(--text-muted);
       font-size: 1.05rem;
       font-weight: 300;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
     }
 
     .mantra {
-      font-family: Georgia, Cambria, serif;
-      font-style: italic;
+      font-family: var(--font-serif);
       color: var(--accent);
-      font-size: 1.05rem;
-      line-height: 2;
-      opacity: 0.9;
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 2.2;
+      opacity: 0.85;
     }
 
-    /* Smooth Cards */
+    /* Smooth Sections */
     section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.25rem;
-      margin-bottom: 1.75rem;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
     }
 
     section:hover {
       background: var(--card-hover);
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      border-color: var(--accent-border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .section-header {
       display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
     .num {
       color: var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
     }
 
     h2 {
-      font-size: 1.35rem;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
       font-weight: 400;
       color: var(--text-main);
-      letter-spacing: -0.01em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .quote {
-      font-family: Georgia, Cambria, serif;
+      font-family: var(--font-serif);
       font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      color: var(--accent);
+      font-size: 1rem;
       margin-bottom: 1.25rem;
+      opacity: 0.9;
     }
 
     ul {
       list-style: none;
-      margin: 1.25rem 0;
+      margin: 1.5rem 0;
     }
 
     ul li {
       position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.65rem;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
       color: var(--text-muted);
       font-size: 0.95rem;
-      transition: color 0.2s ease;
+      transition: color 0.3s ease;
     }
 
     ul li:hover {
@@ -196,84 +225,145 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 0.65rem;
-      width: 4px;
-      height: 4px;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background-color: var(--accent);
-      box-shadow: 0 0 6px var(--accent);
+      box-shadow: 0 0 8px var(--accent);
     }
 
-    .prompt {
-      margin-top: 1.75rem;
-      padding-top: 1.25rem;
+    /* Interactive Reflective Prompts */
+    details {
+      margin-top: 2rem;
+      padding-top: 1rem;
       border-top: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
       font-size: 0.9rem;
       color: var(--text-main);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: color 0.2s ease;
     }
 
-    .prompt em {
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:hover {
+      color: var(--accent);
+    }
+
+    summary em {
       color: var(--accent);
       font-style: normal;
     }
 
-    /* Modern Daily Grid */
+    summary::after {
+      content: "+";
+      font-size: 1.1rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .journal-box {
+      margin-top: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: var(--accent-border);
+    }
+
+    /* Daily Code Grid */
     .daily-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.85rem;
       margin-top: 1.5rem;
     }
 
     .daily-card {
       background: rgba(255, 255, 255, 0.015);
       border: 1px solid var(--border);
-      padding: 1rem;
-      border-radius: 10px;
+      padding: 1.1rem;
+      border-radius: 12px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       color: var(--text-muted);
       text-align: center;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .daily-card:hover {
+    .daily-card:hover, .daily-card.active {
       color: var(--accent);
       border-color: var(--accent);
       background: var(--accent-glow);
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(229, 193, 120, 0.1);
     }
 
-    /* Minimalist Footer */
+    /* Footer */
     footer {
       text-align: center;
       padding: 4rem 0 2rem;
       border-top: 1px solid var(--border);
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     footer h3 {
-      font-size: 0.8rem;
-      letter-spacing: 0.3em;
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
       color: var(--accent);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
+      margin-bottom: 0.85rem;
+      font-weight: 400;
     }
 
     footer p {
       font-size: 0.75rem;
       color: var(--text-muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
     }
 
     .license-text {
       font-size: 0.8rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
   </style>
 </head>
 <body>
+
+  <div class="progress-bar" id="progress"></div>
+  <div id="glow-bg"></div>
 
   <div class="container">
     
@@ -285,13 +375,13 @@
 
     <header>
       <div class="symbol">✦</div>
-      <h1>The Sovereign Wisdom Codex</h1>
+      <h1>Sovereign Wisdom</h1>
       <p class="description">
-        A digital philosophy operating system for wisdom, self-mastery, conscious creation, and purposeful living.
+        A digital philosophy operating system for clarity, self-mastery, conscious creation, and purposeful living.
       </p>
       <div class="mantra">
-        Be still. &nbsp;•&nbsp; See clearly. &nbsp;•&nbsp; Choose wisely.<br>
-        Create deliberately. &nbsp;•&nbsp; Serve completely.
+        Be still &nbsp;•&nbsp; See clearly &nbsp;•&nbsp; Choose wisely<br>
+        Create deliberately &nbsp;•&nbsp; Serve completely
       </div>
     </header>
 
@@ -299,60 +389,78 @@
       
       <section id="principles">
         <div class="section-header">
-          <span class="num">01</span>
+          <span class="num">I</span>
           <h2>Reality Alignment</h2>
         </div>
         <div class="quote">"Truth before preference."</div>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">Reality is the foundation of wisdom. Align perception with what is true.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Reality is the foundation of wisdom. Align perception with what is true rather than what is comfortable.
+        </p>
         <ul>
           <li>Seek truth over comfort.</li>
-          <li>Update your mental models.</li>
-          <li>Question assumptions.</li>
+          <li>Update your mental models continuousy.</li>
+          <li>Question core assumptions.</li>
           <li>Observe before reacting.</li>
         </ul>
-        <div class="prompt">Reflect: <em>What am I refusing to see?</em></div>
+        <details>
+          <summary>Reflect: <em>What am I refusing to see?</em></summary>
+          <div class="journal-box">
+            <textarea placeholder="Write your internal reflection here..."></textarea>
+          </div>
+        </details>
       </section>
 
       <section>
         <div class="section-header">
-          <span class="num">02</span>
+          <span class="num">II</span>
           <h2>Sovereign Awareness</h2>
         </div>
         <div class="quote">"I am the awareness behind experience."</div>
         <ul>
           <li>Create space between stimulus and response.</li>
-          <li>Master attention and emotion.</li>
-          <li>Choose consciously.</li>
+          <li>Master attention and emotional flow.</li>
+          <li>Choose consciously from stillness.</li>
         </ul>
-        <div class="prompt">Reflect: <em>Am I acting from awareness or conditioning?</em></div>
+        <details>
+          <summary>Reflect: <em>Am I acting from awareness or conditioning?</em></summary>
+          <div class="journal-box">
+            <textarea placeholder="Write your internal reflection here..."></textarea>
+          </div>
+        </details>
       </section>
 
       <section>
         <div class="section-header">
-          <span class="num">03</span>
+          <span class="num">III</span>
           <h2>Creation Principle</h2>
         </div>
         <div class="quote">"The creator shapes reality."</div>
         <ul>
-          <li>Create software, knowledge, & art</li>
-          <li>Create systems & value</li>
+          <li>Create software, knowledge, & art.</li>
+          <li>Build systems & compound value.</li>
         </ul>
-        <div class="prompt">Reflect: <em>What did I create today?</em></div>
+        <details>
+          <summary>Reflect: <em>What did I create today?</em></summary>
+          <div class="journal-box">
+            <textarea placeholder="Write your internal reflection here..."></textarea>
+          </div>
+        </details>
       </section>
 
       <section id="daily">
         <div class="section-header">
           <h2>The Daily Sovereign Code</h2>
         </div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">Click affirmations to focus active intentions:</p>
         <div class="daily-grid">
-          <div class="daily-card">I SEEK TRUTH</div>
-          <div class="daily-card">I MASTER MYSELF</div>
-          <div class="daily-card">I GUARD MY ATTENTION</div>
-          <div class="daily-card">I CREATE VALUE</div>
-          <div class="daily-card">I EMBRACE CHALLENGE</div>
-          <div class="daily-card">I ACT WITH LOVE</div>
-          <div class="daily-card">I BUILD FOR THE FUTURE</div>
-          <div class="daily-card">I RETURN TO STILLNESS</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I SEEK TRUTH</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I MASTER MYSELF</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I GUARD MY ATTENTION</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I CREATE VALUE</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I EMBRACE CHALLENGE</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I ACT WITH LOVE</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I BUILD FOR THE FUTURE</div>
+          <div class="daily-card" onclick="this.classList.toggle('active')">I RETURN TO STILLNESS</div>
         </div>
       </section>
 
@@ -374,6 +482,23 @@
     </footer>
 
   </div>
+
+  <script>
+    // Cursor Tracking Background Effect
+    const glowBg = document.getElementById('glow-bg');
+    window.addEventListener('mousemove', (e) => {
+      glowBg.style.setProperty('--x', `${e.clientX}px`);
+      glowBg.style.setProperty('--y', `${e.clientY}px`);
+    });
+
+    // Scroll Progress Indicator
+    const progressBar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      progressBar.style.width = `${scrolled}%`;
+    });
+  </script>
 
 </body>
 </html>
