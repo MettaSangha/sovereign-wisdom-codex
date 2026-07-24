@@ -6,13 +6,15 @@
   <title>The Sovereign Wisdom Codex</title>
   <style>
     :root {
-      --bg: #090a0f;
-      --panel: #12151e;
-      --accent: #d4af37; /* Metallic Gold */
-      --text: #e2e8f0;
-      --text-muted: #8a99ad;
-      --border: rgba(212, 175, 55, 0.2);
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --bg: #07090e;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-hover: rgba(255, 255, 255, 0.04);
+      --accent: #e2c07b;
+      --accent-glow: rgba(226, 192, 123, 0.15);
+      --text-main: #f0f4f8;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(226, 192, 123, 0.25);
     }
 
     * {
@@ -21,196 +23,253 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      line-height: 1.6;
-      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(30, 41, 59, 0.3) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
+      padding: 3rem 1.25rem;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 720px;
       width: 100%;
     }
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: radial-gradient(circle at top, #1a202c 0%, var(--panel) 100%);
-      margin-bottom: 2rem;
-    }
-
-    .symbol {
-      color: var(--accent);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .tagline {
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      font-size: 0.75rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-    .description {
-      color: var(--text-muted);
-      font-size: 1rem;
-      max-width: 500px;
-      margin: 0 auto 2rem;
-    }
-
-    .mantra {
-      font-style: italic;
-      color: var(--accent);
-      line-height: 1.8;
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    /* Navigation */
+    /* Floating Navigation */
     nav {
+      position: sticky;
+      top: 1.5rem;
+      z-index: 100;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      gap: 2rem;
+      background: rgba(7, 9, 14, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      width: fit-content;
+      margin: 0 auto 3.5rem auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: color 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     nav a:hover {
       color: var(--accent);
+      text-shadow: 0 0 8px var(--accent-glow);
     }
 
-    /* Section Styles */
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .symbol {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #ffffff 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .mantra {
+      font-family: Georgia, Cambria, serif;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.05rem;
+      line-height: 2;
+      opacity: 0.9;
+    }
+
+    /* Smooth Cards */
     section {
-      background-color: var(--panel);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      transition: border-color 0.3s ease;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 1.75rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(8px);
     }
 
     section:hover {
-      border-color: var(--border);
+      background: var(--card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     }
 
-    .section-title {
+    .section-header {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 0.75rem;
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      color: #fff;
+      margin-bottom: 0.75rem;
     }
 
-    .section-number {
+    .num {
       color: var(--accent);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
     }
 
     .quote {
+      font-family: Georgia, Cambria, serif;
       font-style: italic;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
     }
 
     ul {
       list-style: none;
-      margin: 1rem 0;
+      margin: 1.25rem 0;
     }
 
     ul li {
       position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      margin-bottom: 0.65rem;
       color: var(--text-muted);
       font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    ul li:hover {
+      color: var(--text-main);
     }
 
     ul li::before {
-      content: "✦";
+      content: "";
       position: absolute;
       left: 0;
-      color: var(--accent);
-      font-size: 0.6rem;
-      top: 0.2rem;
+      top: 0.65rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
     }
 
     .prompt {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      font-weight: 500;
-      color: var(--text);
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
       font-size: 0.9rem;
+      color: var(--text-main);
     }
 
-    /* Daily Code Grid */
-    .daily-code {
+    .prompt em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* Modern Daily Grid */
+    .daily-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 0.75rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
-    .code-item {
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      padding: 0.75rem 1rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-      color: var(--text);
+    .daily-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
       text-align: center;
+      transition: all 0.3s ease;
     }
 
-    /* Footer */
+    .daily-card:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    /* Minimalist Footer */
     footer {
       text-align: center;
-      padding: 3rem 0;
-      color: var(--text-muted);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
     }
 
-    footer h2 {
-      font-size: 0.9rem;
+    footer h3 {
+      font-size: 0.8rem;
       letter-spacing: 0.3em;
       color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
     }
 
-    .license {
+    footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .license-text {
       font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 1rem;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -218,33 +277,33 @@
 
   <div class="container">
     
-    <header>
-      <div class="symbol">✦</div>
-      <div class="tagline">Sovereign</div>
-      <h1>The Sovereign Wisdom Codex</h1>
-      <p class="description">
-        A digital philosophy operating system for wisdom, self-mastery, conscious creation, and purposeful living.
-      </p>
-      <div class="mantra">
-        Be still. &bull; See clearly. &bull; Choose wisely.<br>
-        Create deliberately. &bull; Serve completely.
-      </div>
-    </header>
-
     <nav>
       <a href="#principles">Principles</a>
       <a href="#daily">Daily Code</a>
       <a href="#license">License</a>
     </nav>
 
+    <header>
+      <div class="symbol">✦</div>
+      <h1>The Sovereign Wisdom Codex</h1>
+      <p class="description">
+        A digital philosophy operating system for wisdom, self-mastery, conscious creation, and purposeful living.
+      </p>
+      <div class="mantra">
+        Be still. &nbsp;•&nbsp; See clearly. &nbsp;•&nbsp; Choose wisely.<br>
+        Create deliberately. &nbsp;•&nbsp; Serve completely.
+      </div>
+    </header>
+
     <main>
       
       <section id="principles">
-        <h2 class="section-title">
-          <span class="section-number">I.</span> Reality Alignment
-        </h2>
+        <div class="section-header">
+          <span class="num">01</span>
+          <h2>Reality Alignment</h2>
+        </div>
         <div class="quote">"Truth before preference."</div>
-        <p>Reality is the foundation of wisdom. Align perception with what is true.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Reality is the foundation of wisdom. Align perception with what is true.</p>
         <ul>
           <li>Seek truth over comfort.</li>
           <li>Update your mental models.</li>
@@ -255,9 +314,10 @@
       </section>
 
       <section>
-        <h2 class="section-title">
-          <span class="section-number">II.</span> Sovereign Awareness
-        </h2>
+        <div class="section-header">
+          <span class="num">02</span>
+          <h2>Sovereign Awareness</h2>
+        </div>
         <div class="quote">"I am the awareness behind experience."</div>
         <ul>
           <li>Create space between stimulus and response.</li>
@@ -268,34 +328,39 @@
       </section>
 
       <section>
-        <h2 class="section-title">
-          <span class="section-number">III.</span> Creation Principle
-        </h2>
+        <div class="section-header">
+          <span class="num">03</span>
+          <h2>Creation Principle</h2>
+        </div>
         <div class="quote">"The creator shapes reality."</div>
         <ul>
-          <li>Create software &bull; knowledge &bull; art</li>
-          <li>Create systems &bull; value</li>
+          <li>Create software, knowledge, & art</li>
+          <li>Create systems & value</li>
         </ul>
         <div class="prompt">Reflect: <em>What did I create today?</em></div>
       </section>
 
       <section id="daily">
-        <h2 class="section-title">The Daily Sovereign Code</h2>
-        <div class="daily-code">
-          <div class="code-item">I SEEK TRUTH</div>
-          <div class="code-item">I MASTER MYSELF</div>
-          <div class="code-item">I GUARD MY ATTENTION</div>
-          <div class="code-item">I CREATE VALUE</div>
-          <div class="code-item">I EMBRACE CHALLENGE</div>
-          <div class="code-item">I ACT WITH LOVE</div>
-          <div class="code-item">I BUILD FOR THE FUTURE</div>
-          <div class="code-item">I RETURN TO STILLNESS</div>
+        <div class="section-header">
+          <h2>The Daily Sovereign Code</h2>
+        </div>
+        <div class="daily-grid">
+          <div class="daily-card">I SEEK TRUTH</div>
+          <div class="daily-card">I MASTER MYSELF</div>
+          <div class="daily-card">I GUARD MY ATTENTION</div>
+          <div class="daily-card">I CREATE VALUE</div>
+          <div class="daily-card">I EMBRACE CHALLENGE</div>
+          <div class="daily-card">I ACT WITH LOVE</div>
+          <div class="daily-card">I BUILD FOR THE FUTURE</div>
+          <div class="daily-card">I RETURN TO STILLNESS</div>
         </div>
       </section>
 
       <section id="license">
-        <h2 class="section-title">License</h2>
-        <p class="license">
+        <div class="section-header">
+          <h2>License</h2>
+        </div>
+        <p class="license-text">
           <strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</strong><br>
           You may share and adapt this work with attribution. Commercial use requires permission.
         </p>
@@ -304,7 +369,7 @@
     </main>
 
     <footer>
-      <h2>LIVE DELIBERATELY</h2>
+      <h3>LIVE DELIBERATELY</h3>
       <p>TRUTH • AWARENESS • MASTERY • CREATION • SERVICE • STILLNESS</p>
     </footer>
 
