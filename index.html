@@ -1,1 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+The Sovereign Wisdom Codex | Digital Operating System for Wisdom, Self-Mastery & Conscious Living
+</title>
+
+
+<meta name="description" content="
+The Sovereign Wisdom Codex is a digital philosophy operating system for self-mastery, awareness, discipline, creativity, and purposeful living.
+">
+
+
+<meta name="keywords" content="
+wisdom, philosophy, stoicism, mindfulness, self mastery,
+consciousness, personal development, systems thinking,
+mental models, discipline, productivity, life operating system
+">
+
+
+<meta name="author" content="Matt">
+
+
+<meta name="license" content="
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+">
+
+
+
+<!-- Open Graph -->
+
+<meta property="og:title"
+content="The Sovereign Wisdom Codex">
+
+
+<meta property="og:description"
+content="
+A digital operating system for wisdom, self-mastery,
+conscious living, creativity, and human excellence.
+">
+
+
+<meta property="og:type"
+content="website">
+
+
+<meta property="og:image"
+content="assets/sovereign-preview.png">
+
+
+
+<!-- Twitter -->
+
+<meta name="twitter:card"
+content="summary_large_image">
+
+
+<meta name="twitter:title"
+content="The Sovereign Wisdom Codex">
+
+
+<meta name="twitter:description"
+content="
+A timeless philosophy framework for awareness,
+discipline, creation, and purposeful living.
+">
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600&display=swap"
+rel="stylesheet">
+
+
+
+<style>
+
+
+:root {
+
+--void:#050505;
+--gold:#d4af37;
+--gold-light:#f5d77a;
+--ivory:#f8f5ee;
+--gray:#a8a29e;
+--line:rgba(212,175,55,.25);
+
+}
+
+
+
+* {
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+
+
+html {
+
+scroll-behavior:smooth;
+
+}
+
+
+
+body {
+
+
+background:
+
+radial-gradient(
+circle at top,
+#3b2f16,
+#050505 60%
+);
+
+
+color:var(--ivory);
+
+font-family:"Inter",sans-serif;
+
+line-height:1.8;
+
+overflow-x:hidden;
+
+}
+
+
+
+
+
+/* STAR FIELD */
+
+
+.stars {
+
+
+position:fixed;
+
+inset:0;
+
+z-index:-1;
+
+
+background-image:
+
+radial-gradient(
+circle,
+rgba(212,175,55,.7) 1px,
+transparent 1px
+);
+
+
+background-size:80px 80px;
+
+
+animation:drift 40s linear infinite;
+
+
+opacity:.25;
+
+
+}
+
+
+
+@keyframes drift {
+
+from {
+transform:translateY(0);
+}
+
+to {
+transform:translateY(-200px);
+}
+
+}
+
+
+
+
+/* CREST */
+
+
+.crest {
+
+position:absolute;
+
+top:35px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+text-align:center;
+
+font-family:"Cinzel",serif;
+
+letter-spacing:5px;
+
+color:var(--gold);
+
+}
+
+
+
+.seal {
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+border:2px solid var(--gold);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin:auto;
+
+font-size:3rem;
+
+color:var(--gold-light);
+
+box-shadow:
+0 0 40px rgba(212,175,55,.4);
+
+animation:pulse 4s infinite;
+
+}
+
+
+
+@keyframes pulse {
+
+50% {
+
+box-shadow:
+0 0 70px rgba(212,175,55,.8);
+
+}
+
+}
+
+
+
+.crest span {
+
+display:block;
+
+margin-top:15px;
+
+font-size:.8rem;
+
+}
+
+
+
+
+/* HERO */
+
+
+header {
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:40px;
+
+}
+
+
+
+.hero {
+
+max-width:1000px;
+
+}
+
+
+
+.hero h1 {
+
+
+font-family:"Cinzel",serif;
+
+
+font-size:5rem;
+
+
+letter-spacing:8px;
+
+
+text-transform:uppercase;
+
+
+
+background:
+
+linear-gradient(
+90deg,
+white,
+var(--gold-light),
+var(--gold)
+);
+
+
+
+-webkit-background-clip:text;
+
+color:transparent;
+
+
+}
+
+
+
+.hero p {
+
+margin:40px auto;
+
+max-width:750px;
+
+font-size:1.3rem;
+
+color:#d6d3d1;
+
+}
+
+
+
+.mantra {
+
+padding:45px;
+
+border:1px solid var(--line);
+
+background:
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border-radius:35px;
+
+font-family:"Cinzel",serif;
+
+font-size:1.5rem;
+
+color:var(--gold-light);
+
+}
+
+
+
+
+/* NAV */
+
+
+nav {
+
+position:sticky;
+
+top:0;
+
+z-index:20;
+
+padding:25px;
+
+text-align:center;
+
+background:
+rgba(5,5,5,.8);
+
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid var(--line);
+
+}
+
+
+
+nav a {
+
+color:#d6d3d1;
+
+text-decoration:none;
+
+margin:0 25px;
+
+font-size:.85rem;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+}
+
+
+
+nav a:hover {
+
+color:var(--gold);
+
+}
+
+
+
+
+/* CARDS */
+
+
+main {
+
+width:min(1100px,90%);
+
+margin:auto;
+
+}
+
+
+
+.principle {
+
+margin:80px 0;
+
+padding:60px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,255,255,.07),
+rgba(255,255,255,.015)
+);
+
+
+border:
+
+1px solid rgba(255,255,255,.12);
+
+
+border-radius:35px;
+
+
+box-shadow:
+0 40px 100px rgba(0,0,0,.6);
+
+}
+
+
+
+h2 {
+
+font-family:"Cinzel",serif;
+
+color:var(--gold);
+
+font-size:2.4rem;
+
+}
+
+
+
+.chapter {
+
+display:block;
+
+font-size:.8rem;
+
+letter-spacing:5px;
+
+color:var(--gray);
+
+}
+
+
+
+.quote {
+
+font-family:"Cinzel",serif;
+
+font-size:1.4rem;
+
+font-style:italic;
+
+color:var(--gold-light);
+
+margin:25px 0;
+
+}
+
+
+
+ul {
+
+margin-left:30px;
+
+}
+
+
+
+li {
+
+margin:12px 0;
+
+}
+
+
+
+.question {
+
+margin-top:40px;
+
+padding:25px;
+
+border-left:3px solid var(--gold);
+
+background:
+rgba(212,175,55,.08);
+
+color:var(--gold-light);
+
+}
+
+
+
+
+.code {
+
+background:#020202;
+
+padding:45px;
+
+border-radius:25px;
+
+border:1px solid rgba(212,175,55,.25);
+
+font-family:"Courier New",monospace;
+
+color:#facc15;
+
+font-size:1.2rem;
+
+}
+
+
+
+.daily {
+
+text-align:center;
+
+line-height:2.2;
+
+}
+
+
+
+
+
+footer {
+
+padding:100px 20px;
+
+text-align:center;
+
+border-top:1px solid var(--line);
+
+}
+
+
+
+footer p {
+
+color:var(--gray);
+
+letter-spacing:3px;
+
+}
+
+
+
+@media(max-width:700px){
+
+
+.hero h1 {
+
+font-size:2.5rem;
+
+}
+
+
+.principle {
+
+padding:30px;
+
+}
+
+
+nav {
+
+display:none;
+
+}
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="stars"></div>
+
+
+
+<div class="crest">
+
+<div class="seal">
+✦
+</div>
+
+<span>SOVEREIGN</span>
+
+</div>
+
+
+
+
+<header>
+
+
+<div class="hero">
+
+
+<h1>
+The Sovereign Wisdom Codex
+</h1>
+
+
+<p>
+A digital philosophy operating system for
+wisdom, self-mastery, conscious creation,
+and purposeful living.
+</p>
+
+
+
+<div class="mantra">
+
+Be still.<br>
+See clearly.<br>
+Choose wisely.<br>
+Create deliberately.<br>
+Serve completely.
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+<nav>
+
+<a href="#principles">Principles</a>
+
+<a href="#daily">Daily Code</a>
+
+<a href="#license">License</a>
+
+</nav>
+
+
+
+
+
+<main id="principles">
+
+
+<section class="principle">
+
+<h2>
+<span class="chapter">I</span>
+Reality Alignment
+</h2>
+
+
+<div class="quote">
+"Truth before preference."
+</div>
+
+
+<p>
+Reality is the foundation of wisdom.
+Align perception with what is true.
+</p>
+
+
+<ul>
+
+<li>Seek truth over comfort.</li>
+
+<li>Update your mental models.</li>
+
+<li>Question assumptions.</li>
+
+<li>Observe before reacting.</li>
+
+</ul>
+
+
+<div class="question">
+What am I refusing to see?
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="principle">
+
+
+<h2>
+<span class="chapter">II</span>
+Sovereign Awareness
+</h2>
+
+
+<div class="quote">
+"I am the awareness behind experience."
+</div>
+
+
+<ul>
+
+<li>Create space between stimulus and response.</li>
+
+<li>Master attention and emotion.</li>
+
+<li>Choose consciously.</li>
+
+</ul>
+
+
+<div class="question">
+Am I acting from awareness or conditioning?
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="principle">
+
+
+<h2>
+<span class="chapter">III</span>
+Creation Principle
+</h2>
+
+
+<div class="quote">
+"The creator shapes reality."
+</div>
+
+
+<ul>
+
+<li>Create software.</li>
+
+<li>Create knowledge.</li>
+
+<li>Create art.</li>
+
+<li>Create systems.</li>
+
+<li>Create value.</li>
+
+</ul>
+
+
+<div class="question">
+What did I create today?
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="principle" id="daily">
+
+
+<h2>
+The Daily Sovereign Code
+</h2>
+
+
+<div class="code daily">
+
+
+I SEEK TRUTH.
+
+<br>
+
+I MASTER MYSELF.
+
+<br>
+
+I GUARD MY ATTENTION.
+
+<br>
+
+I CREATE VALUE.
+
+<br>
+
+I EMBRACE CHALLENGE.
+
+<br>
+
+I ACT WITH LOVE.
+
+<br>
+
+I BUILD FOR THE FUTURE.
+
+<br>
+
+I RETURN TO STILLNESS.
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="principle" id="license">
+
+
+<h2>
+License
+</h2>
+
+
+<div class="quote">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+</div>
+
+
+<p>
+
+You may share and adapt this work with attribution.
+Commercial use requires permission.
+
+</p>
+
+
+</section>
+
+
+
+</main>
+
+
+
+
+
+<footer>
+
+<h2>
+LIVE DELIBERATELY
+</h2>
+
+
+<p>
+TRUTH • AWARENESS • MASTERY • CREATION • SERVICE • STILLNESS
+</p>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
