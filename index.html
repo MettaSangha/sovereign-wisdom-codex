@@ -9,69 +9,28 @@
 
 
 <title>
-The Sovereign Wisdom Codex | Digital Operating System for Wisdom, Self-Mastery & Conscious Living
+The Sovereign Wisdom Codex | A Digital Operating System for Wisdom & Self-Mastery
 </title>
 
 
-<meta name="description" content="
-The Sovereign Wisdom Codex is a digital philosophy operating system for self-mastery, awareness, discipline, creativity, and purposeful living.
-">
+<meta name="description"
+content="The Sovereign Wisdom Codex is a digital philosophy operating system for wisdom, self-mastery, awareness, discipline, creativity, and purposeful living.">
 
 
-<meta name="keywords" content="
-wisdom, philosophy, stoicism, mindfulness, self mastery,
-consciousness, personal development, systems thinking,
-mental models, discipline, productivity, life operating system
-">
+<meta name="keywords"
+content="wisdom, philosophy, stoicism, mindfulness, self mastery, consciousness, personal growth, systems thinking, productivity">
 
 
 <meta name="author" content="Matt">
 
 
-<meta name="license" content="
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-">
+<meta name="theme-color" content="#050505">
 
 
-
-<!-- Open Graph -->
-
-<meta property="og:title"
-content="The Sovereign Wisdom Codex">
-
-
-<meta property="og:description"
-content="
-A digital operating system for wisdom, self-mastery,
-conscious living, creativity, and human excellence.
-">
-
-
-<meta property="og:type"
-content="website">
-
-
-<meta property="og:image"
-content="assets/sovereign-preview.png">
-
-
-
-<!-- Twitter -->
-
-<meta name="twitter:card"
-content="summary_large_image">
-
-
-<meta name="twitter:title"
-content="The Sovereign Wisdom Codex">
-
-
-<meta name="twitter:description"
-content="
-A timeless philosophy framework for awareness,
-discipline, creation, and purposeful living.
-">
-
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='.9em' font-size='90'>✦</text>
+</svg>">
 
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600&display=swap"
@@ -81,18 +40,16 @@ rel="stylesheet">
 
 <style>
 
-
 :root {
 
---void:#050505;
+--black:#050505;
 --gold:#d4af37;
 --gold-light:#f5d77a;
---ivory:#f8f5ee;
+--white:#f8f5ee;
 --gray:#a8a29e;
 --line:rgba(212,175,55,.25);
 
 }
-
 
 
 * {
@@ -104,7 +61,6 @@ box-sizing:border-box;
 }
 
 
-
 html {
 
 scroll-behavior:smooth;
@@ -112,20 +68,17 @@ scroll-behavior:smooth;
 }
 
 
-
 body {
-
 
 background:
 
 radial-gradient(
 circle at top,
 #3b2f16,
-#050505 60%
+#050505 65%
 );
 
-
-color:var(--ivory);
+color:var(--white);
 
 font-family:"Inter",sans-serif;
 
@@ -133,17 +86,16 @@ line-height:1.8;
 
 overflow-x:hidden;
 
+-webkit-font-smoothing:antialiased;
+
 }
 
 
 
-
-
-/* STAR FIELD */
+/* BACKGROUND */
 
 
 .stars {
-
 
 position:fixed;
 
@@ -151,24 +103,28 @@ inset:0;
 
 z-index:-1;
 
+pointer-events:none;
+
 
 background-image:
 
 radial-gradient(
 circle,
-rgba(212,175,55,.7) 1px,
+rgba(212,175,55,.6) 1px,
 transparent 1px
 );
 
 
-background-size:80px 80px;
+background-size:90px 90px;
 
 
-animation:drift 40s linear infinite;
+opacity:.18;
 
 
-opacity:.25;
+animation:drift 80s linear infinite;
 
+
+will-change:transform;
 
 }
 
@@ -177,15 +133,18 @@ opacity:.25;
 @keyframes drift {
 
 from {
+
 transform:translateY(0);
+
 }
 
 to {
+
 transform:translateY(-200px);
-}
 
 }
 
+}
 
 
 
@@ -213,7 +172,6 @@ color:var(--gold);
 }
 
 
-
 .seal {
 
 width:90px;
@@ -226,9 +184,9 @@ border:2px solid var(--gold);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 margin:auto;
 
@@ -236,8 +194,11 @@ font-size:3rem;
 
 color:var(--gold-light);
 
+
 box-shadow:
+
 0 0 40px rgba(212,175,55,.4);
+
 
 animation:pulse 4s infinite;
 
@@ -247,9 +208,11 @@ animation:pulse 4s infinite;
 
 @keyframes pulse {
 
+
 50% {
 
 box-shadow:
+
 0 0 70px rgba(212,175,55,.8);
 
 }
@@ -270,11 +233,10 @@ font-size:.8rem;
 
 
 
-
 /* HERO */
 
 
-header {
+.hero-section {
 
 min-height:100vh;
 
@@ -305,15 +267,11 @@ max-width:1000px;
 
 font-family:"Cinzel",serif;
 
-
 font-size:5rem;
-
 
 letter-spacing:8px;
 
-
 text-transform:uppercase;
-
 
 
 background:
@@ -326,11 +284,9 @@ var(--gold)
 );
 
 
-
 -webkit-background-clip:text;
 
 color:transparent;
-
 
 }
 
@@ -354,14 +310,20 @@ color:#d6d3d1;
 
 padding:45px;
 
+border-radius:35px;
+
 border:1px solid var(--line);
 
+
 background:
+
 rgba(255,255,255,.05);
+
 
 backdrop-filter:blur(20px);
 
-border-radius:35px;
+-webkit-backdrop-filter:blur(20px);
+
 
 font-family:"Cinzel",serif;
 
@@ -373,8 +335,7 @@ color:var(--gold-light);
 
 
 
-
-/* NAV */
+/* NAVIGATION */
 
 
 nav {
@@ -383,16 +344,22 @@ position:sticky;
 
 top:0;
 
-z-index:20;
+z-index:10;
 
-padding:25px;
+padding:20px;
 
 text-align:center;
 
+
 background:
+
 rgba(5,5,5,.8);
 
+
 backdrop-filter:blur(20px);
+
+-webkit-backdrop-filter:blur(20px);
+
 
 border-bottom:1px solid var(--line);
 
@@ -406,7 +373,7 @@ color:#d6d3d1;
 
 text-decoration:none;
 
-margin:0 25px;
+margin:0 20px;
 
 font-size:.85rem;
 
@@ -414,8 +381,9 @@ letter-spacing:3px;
 
 text-transform:uppercase;
 
-}
+transition:.3s;
 
+}
 
 
 nav a:hover {
@@ -426,8 +394,7 @@ color:var(--gold);
 
 
 
-
-/* CARDS */
+/* CONTENT */
 
 
 main {
@@ -442,9 +409,10 @@ margin:auto;
 
 .principle {
 
-margin:80px 0;
+margin:70px 0;
 
 padding:60px;
+
 
 background:
 
@@ -455,28 +423,47 @@ rgba(255,255,255,.015)
 );
 
 
-border:
-
-1px solid rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.12);
 
 
 border-radius:35px;
 
 
 box-shadow:
+
 0 40px 100px rgba(0,0,0,.6);
+
+
+opacity:0;
+
+transform:translateY(40px);
+
+
+transition:
+
+opacity .8s ease,
+transform .8s ease,
+border-color .5s ease;
 
 }
 
 
 
-h2 {
+.principle.visible {
 
-font-family:"Cinzel",serif;
+opacity:1;
 
-color:var(--gold);
+transform:translateY(0);
 
-font-size:2.4rem;
+}
+
+
+
+.principle:hover {
+
+transform:translateY(-10px);
+
+border-color:var(--gold);
 
 }
 
@@ -496,6 +483,20 @@ color:var(--gray);
 
 
 
+h2 {
+
+font-family:"Cinzel",serif;
+
+font-size:2.4rem;
+
+color:var(--gold);
+
+margin-bottom:25px;
+
+}
+
+
+
 .quote {
 
 font-family:"Cinzel",serif;
@@ -506,7 +507,7 @@ font-style:italic;
 
 color:var(--gold-light);
 
-margin:25px 0;
+margin-bottom:30px;
 
 }
 
@@ -519,7 +520,6 @@ margin-left:30px;
 }
 
 
-
 li {
 
 margin:12px 0;
@@ -530,27 +530,34 @@ margin:12px 0;
 
 .question {
 
-margin-top:40px;
+margin-top:35px;
 
 padding:25px;
 
 border-left:3px solid var(--gold);
 
+
 background:
+
 rgba(212,175,55,.08);
 
+
 color:var(--gold-light);
+
+font-style:italic;
 
 }
 
 
+
+/* CODE */
 
 
 .code {
 
 background:#020202;
 
-padding:45px;
+padding:40px;
 
 border-radius:25px;
 
@@ -558,9 +565,11 @@ border:1px solid rgba(212,175,55,.25);
 
 font-family:"Courier New",monospace;
 
+font-size:1.1rem;
+
 color:#facc15;
 
-font-size:1.2rem;
+letter-spacing:2px;
 
 }
 
@@ -570,12 +579,13 @@ font-size:1.2rem;
 
 text-align:center;
 
-line-height:2.2;
+line-height:2.3;
 
 }
 
 
 
+/* FOOTER */
 
 
 footer {
@@ -585,6 +595,14 @@ padding:100px 20px;
 text-align:center;
 
 border-top:1px solid var(--line);
+
+}
+
+
+
+footer h2 {
+
+font-size:3rem;
 
 }
 
@@ -600,12 +618,33 @@ letter-spacing:3px;
 
 
 
+/* MOBILE */
+
+
 @media(max-width:700px){
 
 
 .hero h1 {
 
-font-size:2.5rem;
+font-size:2.4rem;
+
+letter-spacing:2px;
+
+}
+
+
+.hero p {
+
+font-size:1rem;
+
+}
+
+
+.mantra {
+
+padding:30px;
+
+font-size:1.1rem;
 
 }
 
@@ -617,14 +656,23 @@ padding:30px;
 }
 
 
-nav {
+h2 {
 
-display:none;
-
-}
+font-size:1.8rem;
 
 }
 
+
+nav a {
+
+margin:0 8px;
+
+font-size:.7rem;
+
+}
+
+
+}
 
 
 </style>
@@ -642,9 +690,7 @@ display:none;
 
 <div class="crest">
 
-<div class="seal">
-✦
-</div>
+<div class="seal">✦</div>
 
 <span>SOVEREIGN</span>
 
@@ -652,8 +698,7 @@ display:none;
 
 
 
-
-<header>
+<header class="hero-section">
 
 
 <div class="hero">
@@ -665,11 +710,9 @@ The Sovereign Wisdom Codex
 
 
 <p>
-A digital philosophy operating system for
-wisdom, self-mastery, conscious creation,
-and purposeful living.
+A timeless operating system for consciousness,
+mastery, creation, and service.
 </p>
-
 
 
 <div class="mantra">
@@ -691,14 +734,13 @@ Serve completely.
 
 
 
-
-<nav>
+<nav aria-label="Main navigation">
 
 <a href="#principles">Principles</a>
 
 <a href="#daily">Daily Code</a>
 
-<a href="#license">License</a>
+<a href="#oath">Oath</a>
 
 </nav>
 
@@ -709,16 +751,22 @@ Serve completely.
 <main id="principles">
 
 
-<section class="principle">
+<article class="principle">
+
 
 <h2>
+
 <span class="chapter">I</span>
+
 Reality Alignment
+
 </h2>
 
 
 <div class="quote">
+
 "Truth before preference."
+
 </div>
 
 
@@ -732,9 +780,9 @@ Align perception with what is true.
 
 <li>Seek truth over comfort.</li>
 
-<li>Update your mental models.</li>
+<li>Update mental models.</li>
 
-<li>Question assumptions.</li>
+<li>Challenge assumptions.</li>
 
 <li>Observe before reacting.</li>
 
@@ -742,27 +790,34 @@ Align perception with what is true.
 
 
 <div class="question">
+
 What am I refusing to see?
+
 </div>
 
 
-</section>
+</article>
 
 
 
 
 
-<section class="principle">
+<article class="principle">
 
 
 <h2>
+
 <span class="chapter">II</span>
+
 Sovereign Awareness
+
 </h2>
 
 
 <div class="quote">
+
 "I am the awareness behind experience."
+
 </div>
 
 
@@ -778,52 +833,58 @@ Sovereign Awareness
 
 
 <div class="question">
+
 Am I acting from awareness or conditioning?
+
 </div>
 
 
-</section>
+</article>
 
 
 
 
 
-<section class="principle">
+<article class="principle">
 
 
 <h2>
+
 <span class="chapter">III</span>
-Creation Principle
+
+Attention Mastery
+
 </h2>
 
 
 <div class="quote">
-"The creator shapes reality."
+
+"Where attention goes, life follows."
+
 </div>
 
 
 <ul>
 
-<li>Create software.</li>
+<li>Protect attention.</li>
 
-<li>Create knowledge.</li>
+<li>Study deeply.</li>
 
-<li>Create art.</li>
+<li>Create more than consume.</li>
 
-<li>Create systems.</li>
-
-<li>Create value.</li>
+<li>Build systems that compound.</li>
 
 </ul>
 
 
 <div class="question">
-What did I create today?
+
+Is this worthy of my life force?
+
 </div>
 
 
-</section>
-
+</article>
 
 
 
@@ -838,7 +899,6 @@ The Daily Sovereign Code
 
 
 <div class="code daily">
-
 
 I SEEK TRUTH.
 
@@ -870,7 +930,6 @@ I BUILD FOR THE FUTURE.
 
 I RETURN TO STILLNESS.
 
-
 </div>
 
 
@@ -880,26 +939,35 @@ I RETURN TO STILLNESS.
 
 
 
-
-<section class="principle" id="license">
+<section class="principle" id="oath">
 
 
 <h2>
-License
+The Sovereign Oath
 </h2>
 
 
 <div class="quote">
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+
+"I do not seek power over others.
+I seek mastery over myself."
+
 </div>
 
 
-<p>
+<div class="code">
 
-You may share and adapt this work with attribution.
-Commercial use requires permission.
+I WILL SEE CLEARLY.
 
-</p>
+I WILL THINK DEEPLY.
+
+I WILL ACT COURAGEOUSLY.
+
+I WILL CREATE BEAUTIFULLY.
+
+I WILL SERVE SOMETHING GREATER THAN MYSELF.
+
+</div>
 
 
 </section>
@@ -914,6 +982,7 @@ Commercial use requires permission.
 
 <footer>
 
+
 <h2>
 LIVE DELIBERATELY
 </h2>
@@ -925,6 +994,46 @@ TRUTH • AWARENESS • MASTERY • CREATION • SERVICE • STILLNESS
 
 
 </footer>
+
+
+
+
+<script>
+
+const sections = document.querySelectorAll(".principle");
+
+
+const observer = new IntersectionObserver(
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+},
+{
+threshold:.15
+}
+);
+
+
+
+sections.forEach(section=>{
+
+observer.observe(section);
+
+});
+
+
+</script>
 
 
 
