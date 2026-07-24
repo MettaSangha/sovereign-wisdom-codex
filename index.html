@@ -6,15 +6,16 @@
   <title>The Sovereign Wisdom Codex</title>
   <style>
     :root {
-      --bg: #050608;
-      --card-bg: rgba(18, 22, 31, 0.5);
-      --card-hover: rgba(26, 32, 44, 0.7);
+      --bg: #030406;
+      --card-bg: rgba(13, 16, 23, 0.65);
+      --card-hover: rgba(22, 27, 38, 0.85);
       --accent: #e5c178;
-      --accent-glow: rgba(229, 193, 120, 0.12);
-      --accent-border: rgba(229, 193, 120, 0.3);
-      --text-main: #f1f5f9;
-      --text-muted: #808ea3;
-      --border: rgba(255, 255, 255, 0.05);
+      --accent-soft: rgba(229, 193, 120, 0.15);
+      --accent-glow: rgba(229, 193, 120, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-accent: rgba(229, 193, 120, 0.35);
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-serif: "Cinzel", "Times New Roman", Georgia, serif;
     }
@@ -33,27 +34,26 @@
       background-color: var(--bg);
       color: var(--text-main);
       font-family: var(--font-sans);
-      line-height: 1.75;
+      line-height: 1.8;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 4rem 1.25rem;
+      padding: 5rem 1.25rem 3rem;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
       position: relative;
+      overflow-x: hidden;
     }
 
-    /* Ambient Cursor Glow Container */
+    /* Interactive Mesh Glow Background */
     #glow-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       pointer-events: none;
       z-index: 0;
-      background: radial-gradient(800px circle at var(--x, 50%) var(--y, 30%), rgba(229, 193, 120, 0.04), transparent 80%);
-      transition: background 0.15s ease-out;
+      background: 
+        radial-gradient(1000px circle at var(--x, 50%) var(--y, 30%), rgba(229, 193, 120, 0.05), transparent 70%),
+        radial-gradient(800px circle at 10% 90%, rgba(30, 41, 59, 0.25), transparent 60%);
+      transition: background 0.2s ease-out;
     }
 
     /* Reading Progress Bar */
@@ -69,29 +69,33 @@
     }
 
     .container {
-      max-width: 740px;
+      max-width: 760px;
       width: 100%;
       position: relative;
       z-index: 1;
     }
 
-    /* Floating Navigation Header */
+    /* Floating Header Nav */
     nav {
       position: sticky;
       top: 1.5rem;
       z-index: 100;
       display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      background: rgba(5, 6, 8, 0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 0.85rem 2rem;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 4, 6, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.75rem 1.5rem;
       border-radius: 9999px;
       border: 1px solid var(--border);
-      width: fit-content;
-      margin: 0 auto 4rem auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin: 0 auto 4.5rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
     }
 
     nav a {
@@ -99,37 +103,63 @@
       text-decoration: none;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       transition: all 0.3s ease;
     }
 
     nav a:hover {
       color: var(--accent);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .btn-focus {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-focus:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
     /* Header Section */
     header {
       text-align: center;
-      margin-bottom: 4.5rem;
+      margin-bottom: 5rem;
     }
 
     .symbol {
       display: inline-block;
       color: var(--accent);
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       margin-bottom: 1.25rem;
-      letter-spacing: 0.1em;
-      filter: drop-shadow(0 0 10px var(--accent-glow));
+      filter: drop-shadow(0 0 12px var(--accent-soft));
+      animation: pulse 6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
 
     h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
       font-weight: 300;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       margin-bottom: 1.25rem;
-      background: linear-gradient(180deg, #ffffff 30%, var(--text-muted) 100%);
+      background: linear-gradient(180deg, #ffffff 40%, var(--text-muted) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
@@ -140,21 +170,23 @@
       font-size: 1.05rem;
       font-weight: 300;
       max-width: 520px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
       line-height: 1.8;
     }
 
     .mantra {
       font-family: var(--font-serif);
       color: var(--accent);
-      font-size: 0.95rem;
-      letter-spacing: 0.15em;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       line-height: 2.2;
       opacity: 0.85;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
     }
 
-    /* Smooth Sections */
+    /* Cards & Sections */
     section {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -167,27 +199,28 @@
 
     section:hover {
       background: var(--card-hover);
-      border-color: var(--accent-border);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(-2px);
     }
 
     .section-header {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .num {
       color: var(--accent);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
     }
 
     h2 {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 400;
       color: var(--text-main);
       letter-spacing: 0.05em;
@@ -200,7 +233,7 @@
       color: var(--accent);
       font-size: 1rem;
       margin-bottom: 1.25rem;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     ul {
@@ -211,7 +244,7 @@
     ul li {
       position: relative;
       padding-left: 1.75rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
       color: var(--text-muted);
       font-size: 0.95rem;
       transition: color 0.3s ease;
@@ -225,7 +258,7 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 0.7rem;
+      top: 0.75rem;
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -233,10 +266,10 @@
       box-shadow: 0 0 8px var(--accent);
     }
 
-    /* Interactive Reflective Prompts */
+    /* Reflective Journal Prompts */
     details {
       margin-top: 2rem;
-      padding-top: 1rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--border);
     }
 
@@ -252,9 +285,7 @@
       transition: color 0.2s ease;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
-    }
+    summary::-webkit-details-marker { display: none; }
 
     summary:hover {
       color: var(--accent);
@@ -266,14 +297,14 @@
     }
 
     summary::after {
-      content: "+";
-      font-size: 1.1rem;
+      content: "✦";
+      font-size: 0.75rem;
       color: var(--accent);
       transition: transform 0.3s ease;
     }
 
     details[open] summary::after {
-      transform: rotate(45deg);
+      transform: rotate(90deg);
     }
 
     .journal-box {
@@ -284,27 +315,44 @@
       width: 100%;
       background: rgba(0, 0, 0, 0.4);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1rem;
       color: var(--text-main);
       font-family: var(--font-sans);
       font-size: 0.9rem;
       resize: vertical;
-      min-height: 80px;
+      min-height: 90px;
       outline: none;
       transition: border-color 0.3s ease;
     }
 
     textarea:focus {
-      border-color: var(--accent-border);
+      border-color: var(--border-accent);
     }
 
-    /* Daily Code Grid */
+    .save-indicator {
+      font-size: 0.7rem;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-top: 0.4rem;
+      display: block;
+      text-align: right;
+    }
+
+    /* Daily Code Section */
+    .daily-counter {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
     .daily-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 0.85rem;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
 
     .daily-card {
@@ -320,14 +368,75 @@
       cursor: pointer;
       user-select: none;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
-    .daily-card:hover, .daily-card.active {
+    .daily-card:hover {
+      color: var(--text-main);
+      border-color: var(--border-accent);
+    }
+
+    .daily-card.active {
       color: var(--accent);
       border-color: var(--accent);
-      background: var(--accent-glow);
-      transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(229, 193, 120, 0.1);
+      background: var(--accent-soft);
+      box-shadow: 0 0 15px rgba(229, 193, 120, 0.15);
+    }
+
+    /* Modal / Focus Overlay */
+    #focus-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 4, 6, 0.95);
+      backdrop-filter: blur(25px);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #focus-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .focus-content {
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .focus-quote {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .btn-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .btn-close:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
     }
 
     /* Footer */
@@ -358,6 +467,13 @@
       color: var(--text-muted);
       line-height: 1.7;
     }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      nav, #glow-bg, .progress-bar, .btn-focus, details { display: none; }
+      section { border: 1px solid #ccc; background: none; }
+      h1, .quote, .num, footer h3 { color: #000; }
+    }
   </style>
 </head>
 <body>
@@ -365,12 +481,24 @@
   <div class="progress-bar" id="progress"></div>
   <div id="glow-bg"></div>
 
+  <!-- Focus Modal Overlay -->
+  <div id="focus-modal">
+    <div class="focus-content">
+      <div class="symbol">✦</div>
+      <div class="focus-quote" id="focus-text">Be Still. See Clearly.</div>
+      <button class="btn-close" onclick="toggleFocus()">Return to Codex</button>
+    </div>
+  </div>
+
   <div class="container">
     
     <nav>
-      <a href="#principles">Principles</a>
-      <a href="#daily">Daily Code</a>
-      <a href="#license">License</a>
+      <div class="nav-links">
+        <a href="#principles">Principles</a>
+        <a href="#daily">Daily Code</a>
+        <a href="#license">License</a>
+      </div>
+      <button class="btn-focus" onclick="toggleFocus()">Stillness Mode</button>
     </nav>
 
     <header>
@@ -394,18 +522,19 @@
         </div>
         <div class="quote">"Truth before preference."</div>
         <p style="color: var(--text-muted); font-size: 0.95rem;">
-          Reality is the foundation of wisdom. Align perception with what is true rather than what is comfortable.
+          Reality is the ultimate foundation of wisdom. Align perception with what is true rather than what is comfortable.
         </p>
         <ul>
           <li>Seek truth over comfort.</li>
-          <li>Update your mental models continuousy.</li>
+          <li>Update your mental models continuously.</li>
           <li>Question core assumptions.</li>
           <li>Observe before reacting.</li>
         </ul>
         <details>
           <summary>Reflect: <em>What am I refusing to see?</em></summary>
           <div class="journal-box">
-            <textarea placeholder="Write your internal reflection here..."></textarea>
+            <textarea id="reflect-1" placeholder="Write your reflection here (saved automatically locally)..." oninput="saveJournal('reflect-1')"></textarea>
+            <span class="save-indicator" id="save-reflect-1">Saved locally</span>
           </div>
         </details>
       </section>
@@ -424,7 +553,8 @@
         <details>
           <summary>Reflect: <em>Am I acting from awareness or conditioning?</em></summary>
           <div class="journal-box">
-            <textarea placeholder="Write your internal reflection here..."></textarea>
+            <textarea id="reflect-2" placeholder="Write your reflection here..." oninput="saveJournal('reflect-2')"></textarea>
+            <span class="save-indicator" id="save-reflect-2">Saved locally</span>
           </div>
         </details>
       </section>
@@ -442,7 +572,8 @@
         <details>
           <summary>Reflect: <em>What did I create today?</em></summary>
           <div class="journal-box">
-            <textarea placeholder="Write your internal reflection here..."></textarea>
+            <textarea id="reflect-3" placeholder="Write your reflection here..." oninput="saveJournal('reflect-3')"></textarea>
+            <span class="save-indicator" id="save-reflect-3">Saved locally</span>
           </div>
         </details>
       </section>
@@ -451,16 +582,16 @@
         <div class="section-header">
           <h2>The Daily Sovereign Code</h2>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">Click affirmations to focus active intentions:</p>
+        <div class="daily-counter" id="daily-progress">0 of 8 Intentions Active Today</div>
         <div class="daily-grid">
-          <div class="daily-card" onclick="this.classList.toggle('active')">I SEEK TRUTH</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I MASTER MYSELF</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I GUARD MY ATTENTION</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I CREATE VALUE</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I EMBRACE CHALLENGE</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I ACT WITH LOVE</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I BUILD FOR THE FUTURE</div>
-          <div class="daily-card" onclick="this.classList.toggle('active')">I RETURN TO STILLNESS</div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I SEEK TRUTH</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I MASTER MYSELF</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I GUARD MY ATTENTION</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I CREATE VALUE</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I EMBRACE CHALLENGE</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I ACT WITH LOVE</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I BUILD FOR THE FUTURE</span></div>
+          <div class="daily-card" onclick="toggleDaily(this)"><span>I RETURN TO STILLNESS</span></div>
         </div>
       </section>
 
@@ -484,7 +615,7 @@
   </div>
 
   <script>
-    // Cursor Tracking Background Effect
+    // Cursor Tracking Effect
     const glowBg = document.getElementById('glow-bg');
     window.addEventListener('mousemove', (e) => {
       glowBg.style.setProperty('--x', `${e.clientX}px`);
@@ -498,6 +629,41 @@
       const scrolled = (window.scrollY / windowHeight) * 100;
       progressBar.style.width = `${scrolled}%`;
     });
+
+    // Stillness/Focus Mode Toggle
+    function toggleFocus() {
+      const modal = document.getElementById('focus-modal');
+      modal.classList.toggle('active');
+    }
+
+    // Interactive Daily Code Tracking & State
+    function toggleDaily(card) {
+      card.classList.toggle('active');
+      updateDailyCount();
+    }
+
+    function updateDailyCount() {
+      const activeCount = document.querySelectorAll('.daily-card.active').length;
+      document.getElementById('daily-progress').innerText = `${activeCount} of 8 Intentions Active Today`;
+    }
+
+    // Local Storage Reflection Journaling
+    function saveJournal(id) {
+      const val = document.getElementById(id).value;
+      localStorage.setItem(`codex_${id}`, val);
+    }
+
+    function loadJournals() {
+      ['reflect-1', 'reflect-2', 'reflect-3'].forEach(id => {
+        const saved = localStorage.getItem(`codex_${id}`);
+        if (saved) {
+          document.getElementById(id).value = saved;
+        }
+      });
+    }
+
+    // Initialize state on page load
+    window.addEventListener('DOMContentLoaded', loadJournals);
   </script>
 
 </body>
