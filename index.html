@@ -1,1624 +1,1025 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>The Sovereign OS — A System for Conscious Creation</title>
-
-<meta name="description" content="
-A living operating system for self-mastery, conscious creation, wisdom, and purposeful living.
-">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-
-:root {
-
---bg:#030406;
-
---surface:
-rgba(13,16,23,.72);
-
---surface-hover:
-rgba(22,27,38,.88);
-
---gold:#e5c178;
-
---gold-soft:
-rgba(229,193,120,.15);
-
---gold-glow:
-rgba(229,193,120,.35);
-
---white:#f8fafc;
-
---muted:#94a3b8;
-
---border:
-rgba(255,255,255,.08);
-
---font-main:
-"Inter",system-ui,sans-serif;
-
---font-title:
-"Cinzel",Georgia,serif;
-
-}
-
-
-
-* {
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-
-
-html {
-scroll-behavior:smooth;
-}
-
-
-
-body {
-
-background:
-radial-gradient(
-circle at top,
-rgba(229,193,120,.08),
-transparent 40%
-),
-var(--bg);
-
-color:var(--white);
-
-font-family:var(--font-main);
-
-line-height:1.8;
-
-min-height:100vh;
-
-padding:4rem 1.25rem;
-
-overflow-x:hidden;
-
--webkit-font-smoothing:antialiased;
-
-}
-
-
-
-/* Ambient Consciousness Field */
-
-#glow-bg {
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-z-index:0;
-
-background:
-
-radial-gradient(
-900px circle at var(--x,50%) var(--y,20%),
-rgba(229,193,120,.08),
-transparent 70%
-),
-
-radial-gradient(
-700px circle at 20% 90%,
-rgba(30,41,59,.35),
-transparent 60%
-);
-
-animation:
-breath 14s infinite alternate;
-
-}
-
-
-
-@keyframes breath {
-
-from {
-transform:scale(1);
-}
-
-to {
-transform:scale(1.08);
-}
-
-}
-
-
-
-/* Reading Progress */
-
-.progress {
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-height:3px;
-
-width:0%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-var(--gold),
-transparent
-);
-
-z-index:1000;
-
-}
-
-
-
-/* Main Container */
-
-.container {
-
-max-width:820px;
-
-width:100%;
-
-margin:auto;
-
-position:relative;
-
-z-index:2;
-
-}
-
-
-
-/* Navigation */
-
-nav {
-
-position:sticky;
-
-top:1rem;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:.8rem 1.5rem;
-
-margin-bottom:5rem;
-
-border-radius:999px;
-
-background:
-rgba(3,4,6,.8);
-
-border:1px solid var(--border);
-
-backdrop-filter:blur(20px);
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.5);
-
-}
-
-
-
-.nav-links {
-
-display:flex;
-
-gap:2rem;
-
-}
-
-
-
-nav a {
-
-text-decoration:none;
-
-font-size:.75rem;
-
-letter-spacing:.18em;
-
-text-transform:uppercase;
-
-color:var(--muted);
-
-transition:.3s;
-
-}
-
-
-
-nav a:hover {
-
-color:var(--gold);
-
-}
-
-
-
-/* Buttons */
-
-button {
-
-font-family:inherit;
-
-}
-
-
-
-.focus-btn {
-
-border-radius:999px;
-
-padding:.45rem 1rem;
-
-cursor:pointer;
-
-background:var(--gold-soft);
-
-border:1px solid rgba(229,193,120,.4);
-
-color:var(--gold);
-
-font-size:.7rem;
-
-letter-spacing:.15em;
-
-text-transform:uppercase;
-
-transition:.3s;
-
-}
-
-
-
-.focus-btn:hover {
-
-background:var(--gold);
-
-color:var(--bg);
-
-box-shadow:
-0 0 25px var(--gold-glow);
-
-}
-
-
-
-/* Hero */
-
-header {
-
-text-align:center;
-
-margin-bottom:6rem;
-
-}
-
-
-
-.symbol {
-
-font-size:2rem;
-
-color:var(--gold);
-
-filter:
-drop-shadow(
-0 0 15px var(--gold-glow)
-);
-
-animation:
-float 6s infinite ease-in-out;
-
-}
-
-
-
-@keyframes float {
-
-50% {
-transform:translateY(-8px);
-}
-
-}
-
-
-
-h1 {
-
-font-family:var(--font-title);
-
-font-weight:400;
-
-font-size:
-clamp(2.5rem,7vw,4rem);
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-margin:1rem 0;
-
-background:
-linear-gradient(
-180deg,
-#fff,
-var(--muted)
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-
-
-.description {
-
-max-width:600px;
-
-margin:auto;
-
-color:var(--muted);
-
-font-size:1.1rem;
-
-font-weight:300;
-
-}
-
-
-
-.mantra {
-
-margin-top:2.5rem;
-
-padding-top:1.5rem;
-
-border-top:1px solid var(--border);
-
-font-family:var(--font-title);
-
-font-size:.9rem;
-
-letter-spacing:.25em;
-
-color:var(--gold);
-
-line-height:2.4;
-
-}
-
-
-
-/* Wisdom Cards */
-
-section {
-
-background:
-var(--surface);
-
-border:
-
-1px solid var(--border);
-
-border-radius:24px;
-
-padding:3rem;
-
-margin-bottom:2rem;
-
-backdrop-filter:blur(15px);
-
-transition:.4s cubic-bezier(.16,1,.3,1);
-
-}
-
-
-
-section:hover {
-
-transform:translateY(-4px);
-
-background:
-var(--surface-hover);
-
-border-color:
-rgba(229,193,120,.35);
-
-box-shadow:
-0 30px 60px rgba(0,0,0,.5);
-
-}
-
-
-
-.section-header {
-
-display:flex;
-
-align-items:center;
-
-gap:1rem;
-
-margin-bottom:1rem;
-
-}
-
-
-
-.number {
-
-color:var(--gold);
-
-letter-spacing:.2em;
-
-font-weight:600;
-
-}
-
-
-
-h2 {
-
-font-family:var(--font-title);
-
-font-weight:400;
-
-font-size:1.4rem;
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-}
-
-
-
-.quote {
-
-font-family:var(--font-title);
-
-font-style:italic;
-
-color:var(--gold);
-
-margin-bottom:1.5rem;
-
-}
-
-
-
-ul {
-
-list-style:none;
-
-}
-
-
-
-li {
-
-position:relative;
-
-padding-left:1.5rem;
-
-margin:.8rem 0;
-
-color:var(--muted);
-
-}
-
-
-
-li:before {
-
-content:"✦";
-
-position:absolute;
-
-left:0;
-
-color:var(--gold);
-
-font-size:.7rem;
-
-}
-
-
-
-/* Mobile */
-
-@media(max-width:600px){
-
-nav {
-
-flex-direction:column;
-
-gap:1rem;
-
-}
-
-.nav-links {
-
-gap:1rem;
-
-}
-
-section {
-
-padding:2rem 1.5rem;
-
-}
-
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sovereign Wisdom Codex</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #030406;
+      --card-bg: rgba(13, 16, 23, 0.65);
+      --card-hover: rgba(22, 27, 38, 0.85);
+      
+      /* Theme Presets */
+      --accent: #e5c178;
+      --accent-soft: rgba(229, 193, 120, 0.15);
+      --accent-glow: rgba(229, 193, 120, 0.25);
+      --border-accent: rgba(229, 193, 120, 0.35);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Cinzel", "Times New Roman", Georgia, serif;
+    }
+
+    [data-theme="emerald"] {
+      --accent: #10b981;
+      --accent-soft: rgba(16, 185, 129, 0.15);
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --border-accent: rgba(16, 185, 129, 0.35);
+    }
+
+    [data-theme="violet"] {
+      --accent: #a855f7;
+      --accent-soft: rgba(168, 85, 247, 0.15);
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --border-accent: rgba(168, 85, 247, 0.35);
+    }
+
+    [data-theme="cyan"] {
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --border-accent: rgba(56, 189, 248, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 5rem 1.25rem 3rem;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    #glow-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(1000px circle at var(--x, 50%) var(--y, 30%), var(--accent-soft), transparent 70%),
+        radial-gradient(800px circle at 10% 90%, rgba(30, 41, 59, 0.25), transparent 60%);
+      transition: background 0.4s ease-out;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s ease-out, background 0.4s ease;
+    }
+
+    .container {
+      max-width: 780px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      position: sticky;
+      top: 1.5rem;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 4, 6, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      margin: 0 auto 4.5rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover, nav a:focus-visible {
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent-glow);
+      outline: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-picker {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .theme-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.6;
+    }
+
+    .theme-dot:hover, .theme-dot.active {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+
+    .btn-focus {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-focus:hover, .btn-focus:focus-visible {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 15px var(--accent-glow);
+      outline: none;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .symbol {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 0 12px var(--accent-soft));
+      animation: pulse 6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(180deg, #ffffff 40%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .mantra {
+      font-family: var(--font-serif);
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 2.2;
+      opacity: 0.85;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(12px);
+    }
+
+    section:hover {
+      background: var(--card-hover);
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-family: var(--font-serif);
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text-main);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      opacity: 0.95;
+    }
+
+    ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    ul li:hover { color: var(--text-main); }
+
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    details {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary:hover, summary:focus-visible { color: var(--accent); outline: none; }
+    summary em { color: var(--accent); font-style: normal; }
+
+    summary::after {
+      content: "✦";
+      font-size: 0.75rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary::after { transform: rotate(90deg); }
+
+    .journal-box { margin-top: 1rem; }
+
+    textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 100px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus { border-color: var(--border-accent); }
+
+    .save-indicator {
+      font-size: 0.7rem;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-top: 0.4rem;
+      display: block;
+      text-align: right;
+    }
+
+    .daily-counter {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .daily-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    button.daily-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border);
+      padding: 1.1rem;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    button.daily-card:hover, button.daily-card:focus-visible {
+      color: var(--text-main);
+      border-color: var(--border-accent);
+      outline: none;
+    }
+
+    button.daily-card.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 15px var(--accent-soft);
+    }
+
+    /* Modal / Stillness Overlay */
+    #focus-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 4, 6, 0.96);
+      backdrop-filter: blur(25px);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #focus-modal.active { opacity: 1; pointer-events: all; }
+
+    .focus-content { text-align: center; max-width: 540px; }
+
+    .focus-quote {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .audio-toggle {
+      background: transparent;
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .audio-toggle:hover {
+      background: var(--accent-soft);
+    }
+
+    .btn-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .btn-close:hover, .btn-close:focus-visible {
+      color: var(--text-main);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    /* Data Export Tools */
+    .tools-grid {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-tool {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .btn-tool:hover {
+      border-color: var(--border-accent);
+      color: var(--text-main);
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    footer h3 {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+      font-weight: 400;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+    }
+
+    .license-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      nav, #glow-bg, .progress-bar, .btn-focus, details, .tools-grid { display: none; }
+      section { border: 1px solid #ccc; background: none; box-shadow: none; }
+      h1, .quote, .num, footer h3 { color: #000; }
+    }
+  </style>
+</head>
 <body>
 
-<div class="progress" id="progress"></div>
-<div id="glow-bg"></div>
-
-
-<!-- Stillness Mode Overlay -->
-
-<div id="focus-modal">
-
-<div class="focus-inner">
-
-<div class="symbol">✦</div>
-
-<div class="focus-message" id="focus-message">
-Be still.<br>
-Remember who you are.
-</div>
-
-<button class="focus-close" onclick="toggleFocus()">
-Return
-</button>
-
-</div>
-
-</div>
-
-
-
-<div class="container">
-
-
-<!-- Navigation -->
-
-<nav>
-
-<div class="nav-links">
-
-<a href="#principles">
-Principles
-</a>
-
-<a href="#activation">
-Activation
-</a>
-
-<a href="#daily">
-Daily Code
-</a>
-
-<a href="#journal">
-Journal
-</a>
-
-</div>
-
-
-<button class="focus-btn" onclick="toggleFocus()">
-Stillness
-</button>
-
-
-</nav>
-
-
-
-
-
-<!-- Hero -->
-
-<header>
-
-<div class="symbol">
-✦
-</div>
-
-
-<h1>
-The Sovereign OS
-</h1>
-
-
-<p class="description">
-
-A living operating system for the conscious human.
-
-A framework to align perception, master attention,
-create deliberately, and embody the highest version of yourself.
-
-</p>
-
-
-<div class="mantra">
-
-I AM AWARENESS<br>
-
-I CHOOSE WITH CLARITY<br>
-
-I CREATE WITH PURPOSE<br>
-
-I SERVE WITH LOVE
-
-</div>
-
-
-</header>
-
-
-
-
-
-<main id="principles">
-
-
-
-<!-- Principle One -->
-
-<section>
-
-
-<div class="section-header">
-
-<span class="number">
-I
-</span>
-
-<h2>
-The Law of Truth
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"See reality clearly before attempting to change it."
-
-</div>
-
-
-
-<ul>
-
-<li>
-Truth is more valuable than comfort.
-</li>
-
-<li>
-Reality is the foundation of wisdom.
-</li>
-
-<li>
-Every belief is a model, not the absolute.
-</li>
-
-<li>
-Observe deeply before reacting.
-</li>
-
-<li>
-Update your understanding continuously.
-</li>
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- Principle Two -->
-
-
-<section>
-
-
-<div class="section-header">
-
-<span class="number">
-II
-</span>
-
-<h2>
-The Law of Being
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"I am not my thoughts. I am the awareness experiencing them."
-
-</div>
-
-
-
-<ul>
-
-<li>
-Master your attention before attempting to master outcomes.
-</li>
-
-<li>
-Create space between stimulus and response.
-</li>
-
-<li>
-Your internal state shapes your external experience.
-</li>
-
-<li>
-Stillness reveals intelligence.
-</li>
-
-<li>
-Conscious choice is freedom.
-</li>
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- Principle Three -->
-
-<section>
-
-
-<div class="section-header">
-
-<span class="number">
-III
-</span>
-
-<h2>
-The Law of Creation
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"The future belongs to those who build it."
-
-</div>
-
-
-
-<ul>
-
-<li>
-Create more than you consume.
-</li>
-
-<li>
-Turn knowledge into systems.
-</li>
-
-<li>
-Build assets that compound.
-</li>
-
-<li>
-Transform imagination into reality.
-</li>
-
-<li>
-Leave evidence that you were here.
-</li>
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- Principle Four -->
-
-<section>
-
-
-<div class="section-header">
-
-<span class="number">
-IV
-</span>
-
-<h2>
-The Law of Alignment
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"Your outer world follows your inner order."
-
-</div>
-
-
-
-<ul>
-
-<li>
-Align identity with vision.
-</li>
-
-<li>
-Align actions with values.
-</li>
-
-<li>
-Align discipline with destiny.
-</li>
-
-<li>
-Become the person capable of holding your future.
-</li>
-
-<li>
-Walk in harmony with what you seek.
-</li>
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Morning Activation -->
-
-
-<section id="activation">
-
-
-<div class="section-header">
-
-<span class="number">
-V
-</span>
-
-<h2>
-Morning Activation
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"Before I act, I remember who I am."
-
-</div>
-
-
-
-<ul>
-
-<li>
-Who am I becoming?
-</li>
-
-<li>
-What reality am I creating?
-</li>
-
-<li>
-What deserves my attention today?
-</li>
-
-<li>
-What would my highest self do now?
-</li>
-
-<li>
-What single action creates the most progress?
-</li>
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Identity Code -->
-
-
-<section id="daily">
-
-
-<div class="section-header">
-
-<h2>
-The Daily Sovereign Code
-</h2>
-
-</div>
-
-
-
-<div class="daily-counter" id="daily-progress">
-
-0 / 8 Integrated
-
-</div>
-
-
-
-<div class="daily-grid">
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM PRESENT
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM DISCIPLINED
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM CREATIVE
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM COURAGEOUS
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM ALIGNED
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM LOVE
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM ABUNDANCE
-</div>
-
-
-<div class="daily-card" onclick="toggleDaily(this)">
-I AM BECOMING
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Journal -->
-
-<section id="journal">
-
-
-<div class="section-header">
-
-<h2>
-Reflection Chamber
-</h2>
-
-</div>
-
-
-
-<div class="quote">
-
-"The unexamined life repeats itself."
-
-</div>
-
-
-
-<div class="journal-question">
-
-What truth is asking to be recognized?
-
-</div>
-
-
-<textarea
-id="journal-1"
-placeholder="Write your reflection..."
-oninput="saveJournal('journal-1')">
-</textarea>
-
-
-
-<div class="journal-question">
-
-What did I create today?
-
-</div>
-
-
-<textarea
-id="journal-2"
-placeholder="Record what you built..."
-oninput="saveJournal('journal-2')">
-</textarea>
-
-
-
-<div class="journal-question">
-
-What would my highest self choose next?
-
-</div>
-
-
-<textarea
-id="journal-3"
-placeholder="Write your next evolution..."
-oninput="saveJournal('journal-3')">
-</textarea>
-
-
-
-</section>
-
-
-
-
-
-<footer>
-
-<h3>
-THE SOVEREIGN PATH
-</h3>
-
-
-<p>
-
-REMEMBER WHO YOU ARE • CREATE WHAT YOU SEE • SERVE WHAT YOU LOVE
-
-</p>
-
-
-</footer>
-
-
-
-</main>
-
-</div>
-
-<script>
-
-
-/*
-====================================
- SOVEREIGN OS ENGINE
- Personal Philosophy Operating System
-====================================
-*/
-
-
-
-/* 
- Ambient Awareness Field
- Tracks cursor movement
-*/
-
-const glow =
-document.getElementById("glow-bg");
-
-
-window.addEventListener(
-"mousemove",
-(event)=>{
-
-glow.style.setProperty(
-"--x",
-event.clientX+"px"
-);
-
-glow.style.setProperty(
-"--y",
-event.clientY+"px"
-);
-
-});
-
-
-
-
-
-
-
-/*
-====================================
- Reading Progress
-====================================
-*/
-
-
-const progress =
-document.getElementById("progress");
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-const height =
-document.documentElement.scrollHeight -
-document.documentElement.clientHeight;
-
-
-const percentage =
-(window.scrollY / height) * 100;
-
-
-progress.style.width =
-percentage + "%";
-
-
-});
-
-
-
-
-
-
-
-
-
-/*
-====================================
- Stillness Mode
-====================================
-*/
-
-
-function toggleFocus(){
-
-const modal =
-document.getElementById(
-"focus-modal"
-);
-
-
-modal.classList.toggle(
-"active"
-);
-
-
-}
-
-
-
-document.addEventListener(
-"keydown",
-(event)=>{
-
-if(event.key.toLowerCase()==="f"){
-
-toggleFocus();
-
-}
-
-});
-
-
-
-
-
-
-
-
-
-/*
-====================================
- Daily Identity Installation
-====================================
-*/
-
-
-const dailyCards =
-document.querySelectorAll(
-".daily-card"
-);
-
-
-
-function toggleDaily(card){
-
-
-card.classList.toggle(
-"active"
-);
-
-
-saveDaily();
-
-
-updateDailyCount();
-
-
-}
-
-
-
-
-
-function updateDailyCount(){
-
-
-const active =
-document.querySelectorAll(
-".daily-card.active"
-).length;
-
-
-
-document.getElementById(
-"daily-progress"
-).innerText =
-`${active} / 8 Integrated`;
-
-
-
-}
-
-
-
-
-
-
-function saveDaily(){
-
-
-const states=[];
-
-
-dailyCards.forEach(
-(card)=>{
-
-states.push(
-card.classList.contains(
-"active"
-)
-);
-
-});
-
-
-localStorage.setItem(
-"sovereign_daily",
-JSON.stringify(states)
-);
-
-
-}
-
-
-
-
-
-function loadDaily(){
-
-
-const saved =
-localStorage.getItem(
-"sovereign_daily"
-);
-
-
-
-if(!saved)
-return;
-
-
-
-const states =
-JSON.parse(saved);
-
-
-
-dailyCards.forEach(
-(card,index)=>{
-
-
-if(states[index]){
-
-
-card.classList.add(
-"active"
-);
-
-
-}
-
-
-});
-
-
-
-updateDailyCount();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-/*
-====================================
- Reflection Chamber
-====================================
-*/
-
-
-function saveJournal(id){
-
-
-const element =
-document.getElementById(id);
-
-
-
-localStorage.setItem(
-"sovereign_"+id,
-element.value
-);
-
-
-
-}
-
-
-
-function loadJournals(){
-
-
-const journals=[
-
-"journal-1",
-
-"journal-2",
-
-"journal-3"
-
-];
-
-
-
-journals.forEach(
-(id)=>{
-
-
-const saved =
-localStorage.getItem(
-"sovereign_"+id
-);
-
-
-
-if(saved){
-
-document.getElementById(id)
-.value=saved;
-
-}
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-====================================
- Daily Wisdom Rotation
-====================================
-*/
-
-
-const wisdoms=[
-
-"Be still. See clearly.",
-
-"Attention is the currency of consciousness.",
-
-"Your identity creates your reality.",
-
-"Create from vision, not reaction.",
-
-"Discipline is devotion to your future self.",
-
-"Your state precedes your circumstances.",
-
-"The observer shapes the experience.",
-
-"Become what you seek."
-
-];
-
-
-
-const focusMessage =
-document.getElementById(
-"focus-message"
-);
-
-
-
-function rotateWisdom(){
-
-
-const index =
-Math.floor(
-Math.random()*wisdoms.length
-);
-
-
-
-if(focusMessage){
-
-focusMessage.innerHTML =
-wisdoms[index];
-
-}
-
-
-}
-
-
-
-
-
-document
-.querySelector(".focus-btn")
-.addEventListener(
-"click",
-rotateWisdom
-);
-
-
-
-
-
-
-
-
-
-/*
-====================================
- Initialize System
-====================================
-*/
-
-
-window.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-loadJournals();
-
-loadDaily();
-
-
-});
-
-
-
-</script>
-
-
+  <div class="progress-bar" id="progress"></div>
+  <div id="glow-bg"></div>
+
+  <!-- Focus Modal Overlay -->
+  <div id="focus-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="focus-content">
+      <div class="symbol">✦</div>
+      <div class="focus-quote" id="focus-text">Be Still. See Clearly. Choose Wisely.</div>
+      <button class="audio-toggle" id="audio-btn" onclick="toggleDrone()">🔊 Enable 432Hz Drone</button><br>
+      <button class="btn-close" onclick="toggleFocus()">Return to Codex</button>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <nav>
+      <div class="nav-links">
+        <a href="#principles">Principles</a>
+        <a href="#daily">Daily Code</a>
+        <a href="#data">Tools</a>
+      </div>
+      <div class="nav-actions">
+        <div class="theme-picker" title="Switch Theme Color">
+          <button class="theme-dot active" style="background:#e5c178;" onclick="setTheme('gold')"></button>
+          <button class="theme-dot" style="background:#10b981;" onclick="setTheme('emerald')"></button>
+          <button class="theme-dot" style="background:#a855f7;" onclick="setTheme('violet')"></button>
+          <button class="theme-dot" style="background:#38bdf8;" onclick="setTheme('cyan')"></button>
+        </div>
+        <button class="btn-focus" onclick="toggleFocus()">Stillness Mode</button>
+      </div>
+    </nav>
+
+    <header>
+      <div class="symbol">✦</div>
+      <h1>Sovereign Wisdom</h1>
+      <p class="description">
+        A digital philosophy operating system for clarity, self-mastery, conscious creation, and purposeful living.
+      </p>
+      <div class="mantra">
+        Be still &nbsp;•&nbsp; See clearly &nbsp;•&nbsp; Choose wisely<br>
+        Create deliberately &nbsp;•&nbsp; Serve completely
+      </div>
+    </header>
+
+    <main>
+      
+      <!-- Section I -->
+      <section id="principles">
+        <div class="section-header">
+          <span class="num">I</span>
+          <h2>Reality Alignment</h2>
+        </div>
+        <div class="quote">"Truth before preference."</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Reality is the ultimate foundation of wisdom. Align perception with what is true rather than what is comfortable.
+        </p>
+        <ul>
+          <li>Seek truth over comfort.</li>
+          <li>Update your mental models continuously.</li>
+          <li>Question core assumptions.</li>
+          <li>Observe before reacting.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>What am I refusing to see?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-1" placeholder="Write your reflection here (saved automatically)..." oninput="handleJournalInput('reflect-1')"></textarea>
+            <span class="save-indicator" id="save-reflect-1">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section II -->
+      <section>
+        <div class="section-header">
+          <span class="num">II</span>
+          <h2>Sovereign Awareness</h2>
+        </div>
+        <div class="quote">"I am the awareness behind experience."</div>
+        <ul>
+          <li>Create space between stimulus and response.</li>
+          <li>Master attention and emotional flow.</li>
+          <li>Choose consciously from stillness.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>Am I acting from awareness or conditioning?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-2" placeholder="Write your reflection here..." oninput="handleJournalInput('reflect-2')"></textarea>
+            <span class="save-indicator" id="save-reflect-2">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section III -->
+      <section>
+        <div class="section-header">
+          <span class="num">III</span>
+          <h2>Creation Principle</h2>
+        </div>
+        <div class="quote">"The creator shapes reality."</div>
+        <ul>
+          <li>Create software, knowledge, &amp; art.</li>
+          <li>Build systems &amp; compound value.</li>
+          <li>Focus on output over consumption.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>What did I create today?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-3" placeholder="Write your reflection here..." oninput="handleJournalInput('reflect-3')"></textarea>
+            <span class="save-indicator" id="save-reflect-3">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section IV -->
+      <section>
+        <div class="section-header">
+          <span class="num">IV</span>
+          <h2>Conscious Action</h2>
+        </div>
+        <div class="quote">"Action is the bridge from inner clarity to outer reality."</div>
+        <ul>
+          <li>Act decisively without attachment to external validation.</li>
+          <li>Turn friction into fuel and obstacles into path.</li>
+          <li>Maintain relentless momentum with steady patience.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>What single action am I procrastinating on?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-4" placeholder="Write your reflection here..." oninput="handleJournalInput('reflect-4')"></textarea>
+            <span class="save-indicator" id="save-reflect-4">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section V -->
+      <section>
+        <div class="section-header">
+          <span class="num">V</span>
+          <h2>Radical Service</h2>
+        </div>
+        <div class="quote">"Sovereignty is cultivated to elevate others."</div>
+        <ul>
+          <li>Build genuine strength to carry real weight.</li>
+          <li>Elevate your community through deliberate action and presence.</li>
+          <li>Lead by silent example rather than preaching.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>How did I serve or elevate someone today?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-5" placeholder="Write your reflection here..." oninput="handleJournalInput('reflect-5')"></textarea>
+            <span class="save-indicator" id="save-reflect-5">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section VI -->
+      <section>
+        <div class="section-header">
+          <span class="num">VI</span>
+          <h2>Sacred Stillness</h2>
+        </div>
+        <div class="quote">"In stillness, the noise fades and purpose emerges."</div>
+        <ul>
+          <li>Return regularly to absolute inner silence.</li>
+          <li>Disconnect routinely from inputs to process experience.</li>
+          <li>Rest deliberate, rejuvenate fully, endure continuously.</li>
+        </ul>
+        <details>
+          <summary>Reflect: <em>Where can I carve out 10 minutes of complete silence?</em></summary>
+          <div class="journal-box">
+            <textarea id="reflect-6" placeholder="Write your reflection here..." oninput="handleJournalInput('reflect-6')"></textarea>
+            <span class="save-indicator" id="save-reflect-6">Saved locally</span>
+          </div>
+        </details>
+      </section>
+
+      <!-- Daily Code -->
+      <section id="daily">
+        <div class="section-header">
+          <h2>The Daily Sovereign Code</h2>
+        </div>
+        <div class="daily-counter" id="daily-progress">0 of 8 Intentions Active Today</div>
+        <div class="daily-grid">
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I SEEK TRUTH</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I MASTER MYSELF</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I GUARD MY ATTENTION</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I CREATE VALUE</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I EMBRACE CHALLENGE</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I ACT WITH LOVE</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I BUILD FOR THE FUTURE</span></button>
+          <button type="button" class="daily-card" onclick="toggleDaily(this)" aria-pressed="false"><span>I RETURN TO STILLNESS</span></button>
+        </div>
+      </section>
+
+      <!-- Data & Tools Section -->
+      <section id="data">
+        <div class="section-header">
+          <h2>Data &amp; Portability</h2>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Your reflections belong to you. Export your journal notes to Markdown format for local archive or PKM tools (Obsidian, Notion, Logseq).
+        </p>
+        <div class="tools-grid">
+          <button class="btn-tool" onclick="exportMarkdown()">📥 Export Journal (.md)</button>
+          <button class="btn-tool" onclick="exportJSON()">💾 Backup Data (.json)</button>
+          <button class="btn-tool" onclick="clearData()" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🗑 Clear Local Data</button>
+        </div>
+      </section>
+
+      <!-- License -->
+      <section id="license">
+        <div class="section-header">
+          <h2>License</h2>
+        </div>
+        <p class="license-text">
+          <strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</strong><br>
+          You may share and adapt this work with attribution. Commercial use requires permission.
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <h3>LIVE DELIBERATELY</h3>
+      <p>TRUTH • AWARENESS • MASTERY • CREATION • SERVICE • STILLNESS</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // --- Cursor Tracking ---
+    const glowBg = document.getElementById('glow-bg');
+    window.addEventListener('mousemove', (e) => {
+      glowBg.style.setProperty('--x', `${e.clientX}px`);
+      glowBg.style.setProperty('--y', `${e.clientY}px`);
+    });
+
+    // --- Scroll Progress Bar ---
+    const progressBar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = windowHeight > 0 ? (window.scrollY / windowHeight) * 100 : 0;
+      progressBar.style.width = `${scrolled}%`;
+    });
+
+    // --- Theme Switcher ---
+    function setTheme(name) {
+      document.documentElement.removeAttribute('data-theme');
+      if (name !== 'gold') {
+        document.documentElement.setAttribute('data-theme', name);
+      }
+      localStorage.setItem('codex_theme', name);
+      
+      document.querySelectorAll('.theme-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', ['gold', 'emerald', 'violet', 'cyan'][idx] === name);
+      });
+    }
+
+    function loadTheme() {
+      const saved = localStorage.getItem('codex_theme') || 'gold';
+      setTheme(saved);
+    }
+
+    // --- Stillness Mode & Audio Drone ---
+    let audioCtx = null;
+    let osc1 = null, osc2 = null, gainNode = null;
+    let isDronePlaying = false;
+
+    function toggleFocus() {
+      const modal = document.getElementById('focus-modal');
+      const isActive = modal.classList.toggle('active');
+      modal.setAttribute('aria-hidden', !isActive);
+      
+      if (!isActive && isDronePlaying) {
+        toggleDrone();
+      }
+    }
+
+    function toggleDrone() {
+      const btn = document.getElementById('audio-btn');
+      if (!isDronePlaying) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // 216Hz & 432Hz dual sine drone
+        osc1 = audioCtx.createOscillator();
+        osc2 = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(216, audioCtx.currentTime);
+        
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(432, audioCtx.currentTime);
+
+        gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+        osc1.connect(gainNode);
+        osc2.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc1.start();
+        osc2.start();
+        
+        isDronePlaying = true;
+        btn.innerText = "🔇 Silence 432Hz Drone";
+      } else {
+        if (gainNode) {
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+          setTimeout(() => {
+            osc1.stop();
+            osc2.stop();
+            audioCtx.close();
+            isDronePlaying = false;
+            btn.innerText = "🔊 Enable 432Hz Drone";
+          }, 1000);
+        }
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('focus-modal');
+        if (modal.classList.contains('active')) toggleFocus();
+      }
+    });
+
+    // --- Daily Intentions Tracker ---
+    const TODAY_KEY = `codex_daily_${new Date().toISOString().slice(0, 10)}`;
+
+    function toggleDaily(card) {
+      card.classList.toggle('active');
+      card.setAttribute('aria-pressed', card.classList.contains('active'));
+      saveDailyState();
+      updateDailyCount();
+    }
+
+    function updateDailyCount() {
+      const activeCount = document.querySelectorAll('.daily-card.active').length;
+      document.getElementById('daily-progress').innerText = `${activeCount} of 8 Intentions Active Today`;
+    }
+
+    function saveDailyState() {
+      const cards = document.querySelectorAll('.daily-card');
+      const activeIndices = Array.from(cards)
+        .map((card, idx) => card.classList.contains('active') ? idx : null)
+        .filter(idx => idx !== null);
+      localStorage.setItem(TODAY_KEY, JSON.stringify(activeIndices));
+    }
+
+    function loadDailyState() {
+      const saved = localStorage.getItem(TODAY_KEY);
+      if (saved) {
+        try {
+          const activeIndices = JSON.parse(saved);
+          const cards = document.querySelectorAll('.daily-card');
+          activeIndices.forEach(idx => {
+            if (cards[idx]) {
+              cards[idx].classList.add('active');
+              cards[idx].setAttribute('aria-pressed', 'true');
+            }
+          });
+        } catch (e) {
+          console.error("Failed to parse daily state", e);
+        }
+      }
+      updateDailyCount();
+    }
+
+    // --- Reflective Journaling ---
+    const saveTimers = {};
+    const ALL_REFLECT_IDS = ['reflect-1', 'reflect-2', 'reflect-3', 'reflect-4', 'reflect-5', 'reflect-6'];
+
+    function handleJournalInput(id) {
+      const indicator = document.getElementById(`save-${id}`);
+      if (indicator) indicator.innerText = "Saving...";
+      
+      clearTimeout(saveTimers[id]);
+      saveTimers[id] = setTimeout(() => {
+        saveJournal(id);
+      }, 500);
+    }
+
+    function saveJournal(id) {
+      const val = document.getElementById(id).value;
+      localStorage.setItem(`codex_${id}`, val);
+      const indicator = document.getElementById(`save-${id}`);
+      if (indicator) indicator.innerText = "Saved locally";
+    }
+
+    function loadJournals() {
+      ALL_REFLECT_IDS.forEach(id => {
+        const saved = localStorage.getItem(`codex_${id}`);
+        if (saved !== null) {
+          const el = document.getElementById(id);
+          if (el) el.value = saved;
+        }
+      });
+    }
+
+    // --- Data Export & Management ---
+    function exportMarkdown() {
+      let md = `# Sovereign Wisdom Codex Journal Export\n\n*Exported on: ${new Date().toLocaleDateString()}*\n\n---\n\n`;
+      
+      const prompts = [
+        "Section I: What am I refusing to see?",
+        "Section II: Am I acting from awareness or conditioning?",
+        "Section III: What did I create today?",
+        "Section IV: What single action am I procrastinating on?",
+        "Section V: How did I serve or elevate someone today?",
+        "Section VI: Where can I carve out 10 minutes of complete silence?"
+      ];
+
+      ALL_REFLECT_IDS.forEach((id, idx) => {
+        const val = localStorage.getItem(`codex_${id}`) || "*No response logged.*";
+        md += `### ${prompts[idx]}\n\n${val}\n\n---\n\n`;
+      });
+
+      downloadFile(md, `sovereign-codex-journal-${new Date().toISOString().slice(0, 10)}.md`, 'text/markdown');
+    }
+
+    function exportJSON() {
+      const data = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('codex_')) {
+          data[key] = localStorage.getItem(key);
+        }
+      }
+      downloadFile(JSON.stringify(data, null, 2), `sovereign-codex-backup.json`, 'application/json');
+    }
+
+    function clearData() {
+      if (confirm("Are you sure you want to clear all locally saved reflections and progress? This action cannot be undone.")) {
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith('codex_')) localStorage.removeItem(key);
+        });
+        location.reload();
+      }
+    }
+
+    function downloadFile(content, fileName, contentType) {
+      const a = document.createElement("a");
+      const file = new Blob([content], { type: contentType });
+      a.href = URL.createObjectURL(file);
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    // Initialize State
+    window.addEventListener('DOMContentLoaded', () => {
+      loadTheme();
+      loadJournals();
+      loadDailyState();
+    });
+  </script>
 
 </body>
-
 </html>
